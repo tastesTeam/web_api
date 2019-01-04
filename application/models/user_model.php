@@ -1,5 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
 class User_model extends CI_Model{
     //用户注册模型
     public function u_register( $data ) {
