@@ -19,7 +19,7 @@ class User_model extends CI_Model{
     }
     //用户登录
     public function u_login( $data ) {
-        $query = $this->db->select('*')
+        $query = $this->db->select('uid,username,avatar,ctime,logintime,level,des')
         ->where( $data )
         ->get('blog_userinfo');
         $result = $query->row();
