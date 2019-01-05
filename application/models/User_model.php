@@ -28,7 +28,7 @@ class User_model extends CI_Model{
         }else {
             //更新登录时间
             $this->db
-            ->where( 'id',$result->id )
+            ->where( 'uid',$result->uid )
             ->update( 'blog_userinfo',array( 'logintime'=>date('Y-m-d')) );
             return $result;
         }
