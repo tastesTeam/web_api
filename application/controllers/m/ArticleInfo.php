@@ -84,6 +84,7 @@ class ArticleInfo extends CI_Controller {
 		$data['uid'] =  $uid;
 		$data['img'] =  $img;
 		$data['publish_time'] =  $publish_time;
+		$data['content'] =  $content;
 		$this->db->insert('blog_article', $data);
 		$last_id = $this->db->insert_id();
 		 if($last_id>0){
