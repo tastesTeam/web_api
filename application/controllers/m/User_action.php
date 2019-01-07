@@ -53,6 +53,8 @@
             };
         }
         public function login() {
+            //登录逻辑
+            phpinfo();
             $Fommat = $this->jsonformat;
             $data = array(
                 'username' => $this->input->post('username'),
