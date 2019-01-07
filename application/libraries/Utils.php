@@ -42,12 +42,14 @@ class Utils {
   }
   /**
    * 验证token的有效性
-   * @ $token_str (客户端传入的token)
+   * @ $rev_object
+   * @ 类型object
+   * @ param { token,uid } token和用户id
    * @ 返回 bool值 true token已过期 false 未过期
    */
-  public function validate_token( $token_str ) {
-    $expireTimer = explode( '-',$this->decrypt_str( $token_str ) );
-    return time() > $expireTimer[0] ? true : false;
+  public function validate_token( $rev_object ) {
+    $expireTimer = explode( '-',$this->decrypt_str( $rev_object['token'] ) );
+    return time() > $expireTimer[0] || $expireTimer[1] != $rev_object['uid']  ? true : false;
   }
 }
 ?>
