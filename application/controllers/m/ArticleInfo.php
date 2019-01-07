@@ -64,6 +64,7 @@ class ArticleInfo extends CI_Controller {
 		
 	public function article_add(){
 		$arr = array();
+		var_dump($_POST);die;
 		$title = trim($this->input->post('title'));
 		$uid = trim($this->input->post('uid'));
 		$img = trim($this->input->post('img'));
