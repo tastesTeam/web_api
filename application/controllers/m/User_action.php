@@ -30,6 +30,7 @@
             );
             $valicode = $this->input->post('valicode');
             session_start();
+            $sess_code = isset( $_SESSION['randcode'] ) ? $_SESSION['randcode'] : '';
             //判断数据是否符合要求
             if( empty($data['username']) ) {
                 echo $Fommat->result(array('keys' => '001|1'));
@@ -40,10 +41,11 @@
             }else if( empty($valicode) ) {
                 echo $Fommat->result(array('keys' => '001|3'));
                 return;
-            }else if( md5( $valicode ) != $_SESSION['randcode'] ) {
-                echo $Fommat->result(array('keys' => '002|4'));
-                return;
-            };
+            }
+            // else if( md5( $valicode ) != $sess_code ) {
+            //     echo $Fommat->result(array('keys' => '002|4'));
+            //     return;
+            // };
             //判断是否存在用户名
             $resultStr = $this->user_model->u_register( $data );
             switch ( $resultStr ) {
