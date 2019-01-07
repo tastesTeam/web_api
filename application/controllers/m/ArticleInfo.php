@@ -80,12 +80,12 @@ class ArticleInfo extends CI_Controller {
 			show_json($data,'用户不存在');
 			exit;
 		}
-		$data['title'] =  $title;
-		$data['uid'] =  $uid;
-		$data['img'] =  $img;
-		$data['publish_time'] =  $publish_time;
-		$data['content'] =  $content;
-		$this->db->insert('blog_article', $data);
+		$arr['title'] =  $title;
+		$arr['uid'] =  $uid;
+		$arr['img'] =  $img;
+		$arr['publish_time'] =  $publish_time;
+		$arr['content'] =  $content;
+		$this->db->insert('blog_article', $arr);
 		$last_id = $this->db->insert_id();
 		 if($last_id>0){
 			$data["data"]=$arr;
