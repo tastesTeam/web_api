@@ -64,18 +64,19 @@ class ArticleInfo extends CI_Controller {
 		
 	public function article_add(){
 		$arr = array();
-		var_dump($_POST);die;
 		$title = trim($this->input->post('title'));
 		$uid = trim($this->input->post('uid'));
 		$img = trim($this->input->post('img'));
 		$content = trim($this->input->post('content'));
 		$publish_time = time();
 		if($title =='' || $uid=='' || $img=='' || $publish_time=='' || $content==''){
+			$data["data"]=$arr;
 			show_json($data,'缺少参数');
 			exit;
 		}
 		$result = $this->db->select('*')->where('uid',$uid)->get('blog_userinfo')->result();
 		if(empty($result)){
+			$data["data"]=$arr;
 			show_json($data,'用户不存在');
 			exit;
 		}
