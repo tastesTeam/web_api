@@ -67,8 +67,9 @@ class ArticleInfo extends CI_Controller {
 		$title = trim($this->input->post('title'));
 		$uid = trim($this->input->post('uid'));
 		$img = trim($this->input->post('img'));
+		$content = trim($this->input->post('content'));
 		$publish_time = time();
-		if($title =='' || $uid=='' || $img=='' || $publish_time==''){
+		if($title =='' || $uid=='' || $img=='' || $publish_time=='' || $content==''){
 			show_json($data,'缺少参数');
 			exit;
 		}
