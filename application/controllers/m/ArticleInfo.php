@@ -91,6 +91,7 @@ class ArticleInfo extends CI_Controller {
 			$data["data"]=$arr;
 			$data["respcode"] = "401";
 			show_json($data,'发布文章失败');
+			
 		}
 	}
 }

@@ -38,6 +38,7 @@ class Upload extends CI_Controller{
 			$arr["respcode"] = "000";
 			show_json($arr,'请求成功');
 			exit;
+			
 		}
 	}
 }
