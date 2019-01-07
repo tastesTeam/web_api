@@ -7,8 +7,14 @@
             $this->load->library('jsonformat');
             //加载用户模型
             $this->load->model('user_model');
-            //引入加密类
-            $this->load->library('encrypt');
+            //引入公共类
+            $this->load->library('utils');
+        }
+        public function index() {
+            $this->load->view('register.html');
+        }
+        public function loginpage() {
+            $this->load->view('login.html');
         }
         public function getcode() {
             $this->load->library('captcha');
@@ -53,7 +59,6 @@
             };
         }
         public function login() {
-            //登录逻辑
             $Fommat = $this->jsonformat;
             $data = array(
                 'username' => $this->input->post('username'),
@@ -71,8 +76,7 @@
                 echo $Fommat->result(array('keys' => '003|8'));
             }else {
                 //加密获取token返回给客户端登录信息
-                $encryString  = (time()+86400).'-'.$resultStr->uid;
-                $resultStr->token = $this->encrypt->encode( $encryString );  
+                $resultStr->token = $this->utils->encrypt_str( array( 'uid'=>$resultStr->uid ));
                 echo $Fommat->result(array('keys' => '000|7','data'=>$resultStr));
             }
         }
