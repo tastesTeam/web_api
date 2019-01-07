@@ -33,12 +33,12 @@ class ArticleInfo extends CI_Controller {
                 $arr[$k]['publish_time'] = $v['publish_time']?date('Y-m-d',$v['publish_time']):'';
             }
             $data["data"]=$arr;
-            $data["respcode"] = "000";
+            $data["code"] = "000";
             show_json($data,'请求成功');
             exit;
         }else{
             $data["data"]=$arr;
-            $data["respcode"] = "411";
+            $data["code"] = "411";
             show_json($data,'数据为空');
             exit;
         }
@@ -49,12 +49,12 @@ class ArticleInfo extends CI_Controller {
         if(!empty($id)){
             $result = $this->db->select('*')->where('id',$id)->get('blog_article')->result();
             $data["data"]=$result[0];
-            $data["respcode"] = "000";
+            $data["code"] = "000";
             show_json($data,'请求成功');
             exit;
         }else{
             $data["data"]=$arr;
-            $data["respcode"] = "999";
+            $data["code"] = "999";
             show_json($data,'参数不全');
             exit;
         }
@@ -89,11 +89,11 @@ class ArticleInfo extends CI_Controller {
 		$last_id = $this->db->insert_id();
 		 if($last_id>0){
 			$data["data"]=$arr;
-			$data["respcode"] = "000";
+			$data["code"] = "000";
 			show_json($data,'发布文章成功');
 		}else{
 			$data["data"]=$arr;
-			$data["respcode"] = "401";
+			$data["code"] = "401";
 			show_json($data,'发布文章失败');
 			
 		}

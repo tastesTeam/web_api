@@ -35,7 +35,7 @@ class Upload extends CI_Controller{
 			$img=$data['upload_data']['file_name'];  //取得文件名
 			$img = $img_url.$img;
 			$arr["data"]=$img;
-			$arr["respcode"] = "000";
+			$arr["code"] = "000";
 			show_json($arr,'请求成功');
 			exit;
 			
