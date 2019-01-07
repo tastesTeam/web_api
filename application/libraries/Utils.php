@@ -9,7 +9,6 @@ class Utils {
     //引入加密类
     $this->CI =& get_instance();
     $this->CI->load->library('encrypt');
-    $this->CI->load->library('encryption');
   }
   /**
    * @ $setTime (token的有效期)

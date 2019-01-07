@@ -58,6 +58,7 @@
                 break;
             };
         }
+		//登录接口
         public function login() {
             $Fommat = $this->jsonformat;
             $data = array(
