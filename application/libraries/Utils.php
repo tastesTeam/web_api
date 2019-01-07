@@ -28,7 +28,6 @@ class Utils {
     //加密拼接字符串
     $timer = isset( $en_object['time'] ) ? $en_object['time'] : 1;
     $code_str = $this->exprieTime( $timer )."-".$en_object['uid'];
-    echo $code_str.'<br>';
     //返回加密字符串
     return $this->CI->encrypt->encode( $code_str );
   }
