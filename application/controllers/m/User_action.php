@@ -43,10 +43,10 @@
                 echo $Fommat->result(array('keys' => '001|3'));
                 return;
             }
-            else if( md5( $valicode ) != $sess_code ) {
-                echo $Fommat->result(array('keys' => '002|4'));
-                return;
-            };
+            // else if( md5( $valicode ) != $sess_code ) {
+            //     echo $Fommat->result(array('keys' => '002|4'));
+            //     return;
+            // };
             //判断是否存在用户名
             $resultStr = $this->user_model->u_register( $data );
             switch ( $resultStr ) {
