@@ -1,11 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<title>403 Forbidden</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>测试接口页面</title>
 </head>
 <body>
-
-<p>Directory access is forbidden.</p>
-
+	<form action="http://localhost/web_api/m/user_action/register" method="post">
+		用户名：<input type="text" name="username" id=""><br>
+		密码：<input type="password" name="password" id=""><br>
+		校验码：<input type="text" name="valicode" id=""><img src="http://localhost/web_api/m/user_action/getcode"/><br>
+		<input type="submit" value="提交">
+	</form>
+	<form action="http://localhost/web_api/m/user_action/login" method="post">
+		用户名：<input type="text" name="username" id=""><br>
+		密码：<input type="password" name="password" id=""><br>
+		<input type="submit" value="提交">
+	</form>
 </body>
 </html>

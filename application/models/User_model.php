@@ -12,6 +12,8 @@ class User_model extends CI_Model{
         if( !empty($issetUser->result()) ) {
             return 'isset';
         };
+        //密码md5加密处理
+        $data['password'] = md5( $data['password'] );
         //存储用户
         $query = $this->db->insert( 'blog_userinfo',$data );
         $insertStatus = $query ? 'success' : 'fail';
@@ -19,6 +21,8 @@ class User_model extends CI_Model{
     }
     //用户登录
     public function u_login( $data ) {
+        //密码md5加密处理
+        $data['password'] = md5( $data['password'] );
         $query = $this->db->select('uid,username,avatar,ctime,logintime,level,des')
         ->where( $data )
         ->get('blog_userinfo');
@@ -27,10 +31,16 @@ class User_model extends CI_Model{
             return 'notset';
         }else {
             //更新登录时间
-            $this->db
+            $query = $this->db
             ->where( 'uid',$result->uid )
-            ->update( 'blog_userinfo',array( 'logintime'=>date('Y-m-d')) );
-            return $result;
+            ->update( 'blog_userinfo',array( 'logintime'=>time()) );
+            if( $query ) {
+                //格式化时间
+                $result->ctime = date('Y/m/d H:i:s',$result->ctime);
+                $result->logintime = date('Y/m/d H:i:s',$result->logintime);
+                return $result;
+            }
+            
         }
     }
 }

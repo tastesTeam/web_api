@@ -11,12 +11,13 @@
             $this->load->library('utils');
         }
         public function index() {
-            $this->load->view('register.html');
+            $this->load->view('index.html');
         }
         public function loginpage() {
             $this->load->view('login.html');
         }
         public function getcode() {
+            //校验码
             $this->load->library('captcha');
             $this->captcha->create(); 
         }
@@ -25,7 +26,7 @@
             $data = array(
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password'),
-                'ctime' => date('Y-m-d'),
+                'ctime' => time(),
                 'uid' => uniqid()
             );
             $valicode = $this->input->post('valicode');
@@ -42,10 +43,10 @@
                 echo $Fommat->result(array('keys' => '001|3'));
                 return;
             }
-            // else if( md5( $valicode ) != $sess_code ) {
-            //     echo $Fommat->result(array('keys' => '002|4'));
-            //     return;
-            // };
+            else if( md5( $valicode ) != $sess_code ) {
+                echo $Fommat->result(array('keys' => '002|4'));
+                return;
+            };
             //判断是否存在用户名
             $resultStr = $this->user_model->u_register( $data );
             switch ( $resultStr ) {
@@ -82,6 +83,13 @@
                 $resultStr->token = $this->utils->encrypt_str( array( 'uid'=>$resultStr->uid ));
                 echo $Fommat->result(array('keys' => '000|7','data'=>$resultStr));
             }
+        }
+        //微信注册
+        public function wxregister() {
+            $code = "023QD22E1Ph7I60nTLYD1GE62E1QD22e";
+            $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx15662ba1602dcd97&secret=4acd6760a9e7076a5f5e3bc2659b7bf4&js_code=".$code."&grant_type=authorization_code";
+            $result = $this->utils->curl_get_https( $url );
+            echo $result;
         }
     }
 ?>
