@@ -86,7 +86,7 @@
         }
         //微信注册
         public function wxregister() {
-            $code = "023QD22E1Ph7I60nTLYD1GE62E1QD22e";
+            $code = "0332yVFm0ZcuBs1yviEm0TWTFm02yVFI";
             $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx15662ba1602dcd97&secret=4acd6760a9e7076a5f5e3bc2659b7bf4&js_code=".$code."&grant_type=authorization_code";
             $result = $this->utils->curl_get_https( $url );
             echo $result;
