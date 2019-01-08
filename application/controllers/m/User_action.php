@@ -86,10 +86,19 @@
         }
         //微信注册
         public function wxregister() {
-            $code = "0332yVFm0ZcuBs1yviEm0TWTFm02yVFI";
+            $Fommat = $this->jsonformat;
+            $code = $this->input->post('code');
+            if( empty($code) ) {
+                echo $Fommat->result(array('keys' => '003|9'));
+                return;
+            }
             $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx15662ba1602dcd97&secret=4acd6760a9e7076a5f5e3bc2659b7bf4&js_code=".$code."&grant_type=authorization_code";
             $result = $this->utils->curl_get_https( $url );
-            echo $result;
+            if( !empty($result->openid) ) {
+                echo 'isset';
+            }else{
+                echo $Fommat->result(array('keys' => '003|10'));
+            }
         }
     }
 ?>
