@@ -84,7 +84,7 @@
                 echo $Fommat->result(array('keys' => '000|7','data'=>$resultStr));
             }
         }
-        //微信注册
+        //微信登录
         public function wxregister() {
             $Fommat = $this->jsonformat;
             $code = $this->input->post('code');
@@ -95,7 +95,7 @@
             $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx15662ba1602dcd97&secret=4acd6760a9e7076a5f5e3bc2659b7bf4&js_code=".$code."&grant_type=authorization_code";
             $result = $this->utils->curl_get_https( $url );
             if( !empty($result->openid) ) {
-                echo 'isset';
+                echo $Fommat->result(array('keys' => '000|7','data'=>$result));
             }else{
                 echo $Fommat->result(array('keys' => '003|10'));
             }
