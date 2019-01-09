@@ -22,7 +22,7 @@
         <div class="sy_header bg-primary">
             <div class="row">
                 <div class="header_left row">
-                    <img src="<?php echo $public_url;?>/img//brandlist/logo.png"/>
+                    <img src="<?php echo $url;?>/public/img/brandlist/logo.png"/>
                     <h4>运营后台</h4>
                 </div>
                 <div class="header_right row">
@@ -99,7 +99,7 @@
 							<!-- 编辑器源码文件 -->
 							<script type="text/javascript" src="<?php echo $url;?>/ueditor/ueditor.all.js"></script>
 							
-							<form action="http://127.0.0.1/CI/m/ArticleAdd/insert" method="post">  
+							<form action="http://api.wangyunchuan.top/m/ArticleAdd/insert" method="post">  
 							<!-- 加载编辑器的容器 -->
 								<script id="container" name="content" type="text/plain" style="height:500px;">
 									这里写你的初始化内容
@@ -172,6 +172,6 @@
 var editor = UE.getEditor('container');//container为表单的id
 /* serve.php为你点击提交表单的的链接 */
 </script>
-<script src="<?php echo $public_url;?>/js/jquery.min.js"></script>
-<script src="<?php echo $public_url;?>/js/bootstrap.min.js"></script>
+<script src="<?php echo $url;?>/public/js/jquery.min.js"></script>
+<script src="<?php echo $url;?>/public/js/bootstrap.min.js"></script>
 </html>
