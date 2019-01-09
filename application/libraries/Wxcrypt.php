@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 1998-2014 Tencent Inc.
  */
 
-class Wxbizdatacrypt
+class Wxcrypt
 {
     private $appid;
 	private $sessionKey;
