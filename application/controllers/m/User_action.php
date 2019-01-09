@@ -109,7 +109,7 @@
                 if( !empty($signature) ) {
                     if( sha1($rawData.$result->session_key) == $signature ) {
                         //引入微信数据解密类
-                        $this->load->library('WXBizDataCrypt',array('openid'=>$result->openid,'session_key'=>$result->session_key));
+                        $this->load->library('WXBizDataCrypt',array('appid'=>'wx15662ba1602dcd97','session_key'=>$result->session_key));
                         $this->WXBizDataCrypt->decryptData($encryptedData, $iv, $data);
                         if ($errCode == 0) {
                             print($data . "\n");
