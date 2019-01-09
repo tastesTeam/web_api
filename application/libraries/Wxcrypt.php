@@ -39,13 +39,13 @@ class Wxcrypt
 	public function decryptData( $encryptedData, $iv, &$data )
 	{
 		if (strlen($this->sessionKey) != 24) {
-			return $this->$IllegalAesKey;
+			return self::$IllegalAesKey;
 		}
 		$aesKey=base64_decode($this->sessionKey);
 
         
 		if (strlen($iv) != 24) {
-			return $this->$IllegalIv;
+			return self::$IllegalIv;
 		}
 		$aesIV=base64_decode($iv);
 
@@ -56,14 +56,14 @@ class Wxcrypt
 		$dataObj=json_decode( $result );
 		if( $dataObj  == NULL )
 		{
-			return $this->$IllegalBuffer;
+			return self::$IllegalBuffer;
 		}
 		if( $dataObj->watermark->appid != $this->appid )
 		{
-			return $this->$IllegalBuffer;
+			return self::$IllegalBuffer;
 		}
 		$data = $result;
-		return $this->$OK;
+		return self::$OK;
 	}
 
 }
