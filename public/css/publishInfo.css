@@ -1,0 +1,63 @@
+.top_inner{
+    text-indent: 10px;
+    border-left: 3px solid #4381e6;
+    color: black;
+    font-size: 18px;
+}
+.inner_item_uplod{
+    width: 120px;
+    height: 120px;
+    position: relative;
+}
+.inner_item_uplod .del{
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    z-index: 2;
+    display: none;
+}
+.inner_item_uplod .addImg{
+    width: 100%;
+    height: 100%;
+}
+.file_upload{
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.pub_inner_item{
+    display: flex;
+    align-items: center;
+    margin-top: 46px;
+}
+.inner_item_tit{
+    margin-right: 48px;
+    font-size: 15px;
+    color: #333333;
+}
+.inner_item_select .caret{
+    margin-left: 70px;
+}
+.inner_item_radio{
+    display: flex;
+}
+.inner_item_radio .radio{
+    margin-top: 0!important;
+    margin-bottom: 0!important;
+}
+.inner_item_radio .radio:nth-child(1){
+    margin-right: 34px;
+}
+.b_style{
+    margin-right: 28px;
+    padding: 6px 30px;
+}
+.btn_item{
+    margin-top: 68px;
+    margin-bottom: 30px;
+}

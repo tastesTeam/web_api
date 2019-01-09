@@ -29,7 +29,7 @@ class ArticleInfo extends CI_Controller {
                 $arr[$k]['id'] = $v['id']?$v['id']:'';
                 $arr[$k]['uid'] = $v['uid']?$v['uid']:'';
                 $arr[$k]['title'] = $v['title']?$v['title']:'';
-                $arr[$k]['img'] = $v['img']?'http://attachment.shengyimao.com/'.$v['img']:'';
+                $arr[$k]['img'] = $v['img']?$v['img']:'';
                 $arr[$k]['publish_time'] = $v['publish_time']?date('Y-m-d',$v['publish_time']):'';
             }
             $data["data"]=$arr;
