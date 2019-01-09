@@ -87,7 +87,17 @@
         //微信登录
         public function wxregister() {
             $Fommat = $this->jsonformat;
+            //微信返回code
             $code = $this->input->post('code');
+            //微信返回的用户加密数据
+            $encryptedData = $this->input->post('encryptedData');
+            //加密向量
+            $iv = $this->input->post('iv');
+            //签名
+            $signature = $this->input->post('signature');
+            //加密数据
+            $rawData = $this->input->post('rawData');
+            //根据code获取openid session_key
             if( empty($code) ) {
                 echo $Fommat->result(array('keys' => '003|9'));
                 return;
@@ -95,7 +105,12 @@
             $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx15662ba1602dcd97&secret=4acd6760a9e7076a5f5e3bc2659b7bf4&js_code=".$code."&grant_type=authorization_code";
             $result = $this->utils->curl_get_https( $url );
             if( !empty($result->openid) ) {
-                echo $Fommat->result(array('keys' => '000|7','data'=>$result));
+                if( !empty($signature) ) {
+                    if( sha1($rawData.$result->session_key) == $signature ) {
+                        echo '相等';
+                    }
+                } 
+                //echo $Fommat->result(array('keys' => '000|7','data'=>$result));
             }else{
                 echo $Fommat->result(array('keys' => '003|10'));
             }
