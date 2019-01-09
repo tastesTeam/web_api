@@ -110,8 +110,8 @@
                                 <div class="pub_inner_item">
                                     <div class="inner_item_tit">封<span style="visibility: hidden;">的的</span>面：</div>
                                     <div class="inner_item_uplod">
-                                        <div class="del"><img src="<?php echo $public_url;?>/img/brandlist/close.png"/></div>
-                                        <img src="<?php echo $public_url;?>/img/brandlist/add.png" class="addImg"/>
+                                        <div class="del"><img src="<?php echo $url;?>/public/img/brandlist/close.png"/></div>
+                                        <img src="<?php echo $url;?>/public/img/brandlist/add.png" class="addImg"/>
                                         <input type="file" class="file_upload"/>
                                     </div>
                                 </div>
