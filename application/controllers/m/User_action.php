@@ -105,10 +105,22 @@
             $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx15662ba1602dcd97&secret=4acd6760a9e7076a5f5e3bc2659b7bf4&js_code=".$code."&grant_type=authorization_code";
             $result = $this->utils->curl_get_https( $url );
             if( !empty($result->openid) ) {
+                //如果签名数据存在校验数据的完整性
                 if( !empty($signature) ) {
                     if( sha1($rawData.$result->session_key) == $signature ) {
-                        echo '相等';
+                        //引入微信数据解密类
+                        $this->load->library('WXBizDataCrypt',$result->openid,$result->session_key);
+                        $this->WXBizDataCrypt->decryptData($encryptedData, $iv, $data);
+                        if ($errCode == 0) {
+                            print($data . "\n");
+                        } else {
+                            print($errCode . "\n");
+                        }
+                    }else{
+                        echo $Fommat->result(array('keys' => '003|10','data'=>$result));
                     }
+                }else{
+
                 } 
                 //echo $Fommat->result(array('keys' => '000|7','data'=>$result));
             }else{
