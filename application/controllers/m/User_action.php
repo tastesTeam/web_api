@@ -104,7 +104,7 @@
             }
             $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx15662ba1602dcd97&secret=4acd6760a9e7076a5f5e3bc2659b7bf4&js_code=".$code."&grant_type=authorization_code";
             $result = $this->utils->curl_get_https( $url );
-            echo $result;
+            var_dump( $result );
             if( !empty($result->openid) ) {
                 //如果签名数据存在校验数据的完整性
                 if( !empty($signature) ) {
