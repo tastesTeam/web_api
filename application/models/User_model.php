@@ -50,6 +50,10 @@ class User_model extends CI_Model{
         ->where('openId',$data->openId)
         ->get('blog_wx_userinfo');
         $result = $query->row();
+        //格式化时间
+        $result->ctime = date('Y/m/d H:i:s',$result->ctime);
+        $result->logintime = date('Y/m/d H:i:s',$result->logintime);
+        
         if( empty( $result ) ) {
             $data->uid = uniqid();
             $data->ctime = time();

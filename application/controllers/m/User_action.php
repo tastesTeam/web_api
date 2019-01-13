@@ -131,10 +131,10 @@
                         echo $Fommat->result(array('keys' => '003|11'));
                     }
                 }else{
-                    echo $Fommat->result(array('keys' => '003|11'));
+                    echo $Fommat->result(array('keys' => '003|9'));
                 } 
             }else{
-                echo $Fommat->result(array('keys' => '003|10'));
+                echo $Fommat->result(array('keys' => '003|13'));
             }
         }
     }
