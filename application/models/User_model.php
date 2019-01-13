@@ -51,13 +51,12 @@ class User_model extends CI_Model{
         ->get('blog_wx_userinfo');
         $result = $query->row();
         if( empty( $result ) ) {
-            echo 'insert';
+            $data->uid = uniqid();
             $data->ctime = time();
             $data->logintime = time();
             $bool = $this->db->insert('blog_wx_userinfo',$data);
             return $bool ? true : false;
         }else {
-            echo 'update';
             //更新登录时间
             $bool = $this->db
             ->where( 'openId',$data->openId )
