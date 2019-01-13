@@ -21,7 +21,8 @@ class Jsonformat {
             '10' => '无效的code参数',
             '11' => '数据获取失败',
             '12' => '登录失败',
-            '13' => '微信返回错误'
+            '13' => '微信返回错误',
+            '14' => '数据已过期'
         );
         $this->msgKeyword = array_merge( $keys,$keyWord );
     }
