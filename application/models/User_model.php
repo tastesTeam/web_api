@@ -45,7 +45,7 @@ class User_model extends CI_Model{
     }
     //微信小程序用户快捷登录
     public function wx_u_register( $data ) {
-        echo $data;
+        var_dump( $data );
         //判断数据库是否存在该用户，没有则插入用户数据，如果存在则返回数据
         $query = $this->db->select('openId')
         ->where('openId',$data['openId'])
