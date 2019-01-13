@@ -112,6 +112,8 @@
                         $this->load->library('wxcrypt',array('appid'=>'wx15662ba1602dcd97','session_key'=>$result->session_key));
                         $errCode = $this->wxcrypt->decryptData($encryptedData, $iv, $data);
                         if ($errCode == 0) {
+                            unset( $data->watermark );
+                            $this->user_model->wx_u_register( $data ); 
                             print($data . "\n");
                         } else {
                             print($errCode . "\n");
