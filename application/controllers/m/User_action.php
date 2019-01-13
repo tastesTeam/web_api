@@ -104,6 +104,7 @@
             }
             $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx15662ba1602dcd97&secret=4acd6760a9e7076a5f5e3bc2659b7bf4&js_code=".$code."&grant_type=authorization_code";
             $result = $this->utils->curl_get_https( $url );
+            echo $result;
             if( !empty($result->openid) ) {
                 //如果签名数据存在校验数据的完整性
                 if( !empty($signature) ) {
@@ -112,11 +113,13 @@
                         $this->load->library('wxcrypt',array('appid'=>'wx15662ba1602dcd97','session_key'=>$result->session_key));
                         $errCode = $this->wxcrypt->decryptData($encryptedData, $iv, $data);
                         if ($errCode == 0) {
+                            //将js json字符串转换成php对象格式
                             $data = json_decode( $data );
+                            //将对象中的watermark对象删除
                             unset( $data->watermark );
                             $this->user_model->wx_u_register( $data ); 
                         } else {
-                            print($errCode . "\n");
+                            echo $Fommat->result(array('keys' => '003|11'));
                         }
                     }else{
                         echo $Fommat->result(array('keys' => '003|10','data'=>$result));
