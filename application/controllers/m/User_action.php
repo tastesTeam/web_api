@@ -104,7 +104,6 @@
             }
             $url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx15662ba1602dcd97&secret=4acd6760a9e7076a5f5e3bc2659b7bf4&js_code=".$code."&grant_type=authorization_code";
             $result = $this->utils->curl_get_https( $url );
-            var_dump( $result );
             if( !empty($result->openid) ) {
                 //如果签名数据存在校验数据的完整性
                 if( !empty($signature) ) {
@@ -117,17 +116,23 @@
                             $data = json_decode( $data );
                             //将对象中的watermark对象删除
                             unset( $data->watermark );
-                            $this->user_model->wx_u_register( $data ); 
+                            $status = $this->user_model->wx_u_register( $data ); 
+                            if( $status ) {
+                                //生成token
+                                $status->token = $this->utils->encrypt_str( array( 'uid'=>$status->uid ));
+                                echo $Fommat->result(array('keys' => '000|7','data' => $status));
+                            }else {
+                                echo $Fommat->result(array('keys' => '003|12'));
+                            }
                         } else {
                             echo $Fommat->result(array('keys' => '003|11'));
                         }
                     }else{
-                        echo $Fommat->result(array('keys' => '003|10','data'=>$result));
+                        echo $Fommat->result(array('keys' => '003|11'));
                     }
                 }else{
-
+                    echo $Fommat->result(array('keys' => '003|11'));
                 } 
-                //echo $Fommat->result(array('keys' => '000|7','data'=>$result));
             }else{
                 echo $Fommat->result(array('keys' => '003|10'));
             }

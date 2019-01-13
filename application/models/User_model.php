@@ -46,7 +46,7 @@ class User_model extends CI_Model{
     //微信小程序用户快捷登录
     public function wx_u_register( $data ) {
         //判断数据库是否存在该用户，没有则插入用户数据，如果存在则返回数据
-        $query = $this->db->select('openId')
+        $query = $this->db->select('uid,gender,ctime,logintime')
         ->where('openId',$data->openId)
         ->get('blog_wx_userinfo');
         $result = $query->row();
@@ -55,13 +55,13 @@ class User_model extends CI_Model{
             $data->ctime = time();
             $data->logintime = time();
             $bool = $this->db->insert('blog_wx_userinfo',$data);
-            return $bool ? true : false;
+            return $bool ? $result : false;
         }else {
             //更新登录时间
             $bool = $this->db
             ->where( 'openId',$data->openId )
             ->update( 'blog_wx_userinfo',array( 'logintime'=>time()) );
-            return $bool ? true : false;
+            return $bool ? $result : false;
         }
     }
 }

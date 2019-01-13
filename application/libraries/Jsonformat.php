@@ -18,7 +18,9 @@ class Jsonformat {
             '7' => '登录成功',
             '8' => '用户名或密码有误',
             '9' => '参数错误',
-            '10' => '无效的code参数'
+            '10' => '无效的code参数',
+            '11' => '数据获取失败',
+            '12' => '登录失败'
         );
         $this->msgKeyword = array_merge( $keys,$keyWord );
     }
